@@ -3,6 +3,9 @@ import { RouterOutlet } from '@angular/router';
 import { NgxExtendedPdfViewerComponent, NgxExtendedPdfViewerModule, NgxExtendedPdfViewerService, PDFDocumentProxy } from 'ngx-extended-pdf-viewer'; 
 import emailjs, { type EmailJSResponseStatus } from '@emailjs/browser';
 
+
+import {ReactiveFormsModule,FormBuilder} from '@angular/forms'
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -19,9 +22,12 @@ export class AppComponent implements OnInit {
   pdfDownloaded: any;
   @ViewChild('pdfViewer') pdfViewer!: NgxExtendedPdfViewerComponent;
 
-  constructor(private ngZone: NgZone,private ngxService: NgxExtendedPdfViewerService){
+  constructor(private ngZone: NgZone,private ngxService: NgxExtendedPdfViewerService, 
+    private formBuilder:FormBuilder){
 
   }
+
+  public sendMessageForm = {}
 
   ngOnInit(){
     
@@ -32,7 +38,15 @@ export class AppComponent implements OnInit {
     window.open(this.pdfSrc);
   }
 
+  //initilize the form
+  LoadMessageForm(){
+    this.sendMessageForm = this.formBuilder.group({
+
+    })
+  }
+
   sendMessageButton(){
+    
     // const btn = document.getElementById('button');
 
     // document.getElementById('form')
