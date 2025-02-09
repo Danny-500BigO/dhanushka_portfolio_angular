@@ -1,15 +1,16 @@
-import { Component, NgZone, OnInit, ViewChild } from '@angular/core';
+import { Component, NgZone, OnInit, ViewChild, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NgxExtendedPdfViewerComponent, NgxExtendedPdfViewerModule, NgxExtendedPdfViewerService, PDFDocumentProxy } from 'ngx-extended-pdf-viewer'; 
 import emailjs, { type EmailJSResponseStatus } from '@emailjs/browser';
 
 
-import {ReactiveFormsModule,FormBuilder} from '@angular/forms'
+import {ReactiveFormsModule,FormBuilder, Validators} from '@angular/forms'
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,NgxExtendedPdfViewerModule],
+  imports: [RouterOutlet,NgxExtendedPdfViewerModule,ReactiveFormsModule,CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
@@ -22,15 +23,17 @@ export class AppComponent implements OnInit {
   pdfDownloaded: any;
   @ViewChild('pdfViewer') pdfViewer!: NgxExtendedPdfViewerComponent;
 
+
   constructor(private ngZone: NgZone,private ngxService: NgxExtendedPdfViewerService, 
     private formBuilder:FormBuilder){
 
   }
 
-  public sendMessageForm = {}
+  public sendMessageForm:any;
 
   ngOnInit(){
-    
+
+    this.LoadMessageForm();
   }
 
   //download the resume
@@ -41,41 +44,20 @@ export class AppComponent implements OnInit {
   //initilize the form
   LoadMessageForm(){
     this.sendMessageForm = this.formBuilder.group({
-
+        nameControl:([]),
+        emailControl:(['', Validators.compose([
+          Validators.required,
+          Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+   ])]),
+        commentControl:[]
     })
   }
 
   sendMessageButton(){
-    
-    // const btn = document.getElementById('button');
-
-    // document.getElementById('form')
-    //  .addEventListener('submit', function(event) {
-    //    event.preventDefault();
-    
-    //    btn.value = 'Sending...';
-    
-    //    const serviceID = 'default_service';
-    //    const templateID = 'template_iumbuew';
-    
-    //    emailjs.sendForm(serviceID, templateID, this)
-    //     .then(() => {
-    //       btn.value = 'Send Email';
-    //       alert('Sent!');
-    //     }, (err) => {
-    //       btn.value = 'Send Email';
-    //       alert(JSON.stringify(err));
-    //     });
-    // });
-  }
-
-
-  public sendEmail(e: Event) {
-    e.preventDefault();
-
+   
     emailjs
-      .sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', e.target as HTMLFormElement, {
-        publicKey: 'YOUR_PUBLIC_KEY',
+      .send('service_s3mywkk', 'template_b1wnx0q', {...this.sendMessageForm.value} ,{
+        publicKey: '6URA-uGSEnqNMWygR',
       })
       .then(
         () => {
@@ -86,4 +68,5 @@ export class AppComponent implements OnInit {
         },
       );
   }
+
 }

@@ -12,7 +12,7 @@
     <!-- Page Navbar -->
     <nav class="custom-navbar" data-spy="affix" data-offset-top="20">
         <div class="container">
-            <a class="logo" href="#">Meyawo</a>         
+            <a class="logo" href="#">Portfolio</a>         
             <ul class="nav">
                 <li class="item">
                     <a class="link" href="#home">Home</a>
@@ -65,7 +65,7 @@
             <!-- about wrapper -->
             <div class="about">
                 <div class="about-img-holder">
-                    <img src="../assets/imgs/man.png" class="about-img" alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page">
+                    <img  src="../assets/imgs/dhanush.png" class="about-img" alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page">
                 </div>
                 <div class="about-caption">
                     <p class="section-subtitle">Who Am I ?</p>
@@ -94,7 +94,7 @@
                     <div class="service-card">
                         <div class="body">
                             <img src="assets/imgs/pencil-case.svg" alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page" class="icon">
-                            <h6 class="title">Adipisicing</h6>
+                            <h6 class="title">Adipisicing(Coming Soon)</h6>
                             <p class="subtitle">Labore velit culpa adipisci excepturi consequuntur itaque in nam molestias dolorem iste quod.</p>
                         </div>
                     </div>
@@ -103,7 +103,7 @@
                     <div class="service-card">
                         <div class="body">
                             <img src="assets/imgs/responsive.svg" alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page" class="icon">
-                            <h6 class="title">Sapiente</h6>
+                            <h6 class="title">Sapiente(Coming Soon)</h6>
                             <p class="subtitle">Labore velit culpa adipisci excepturi consequuntur itaque in nam molestias dolorem iste quod.</p>
                         </div>
                     </div>
@@ -112,7 +112,7 @@
                     <div class="service-card">
                         <div class="body">
                             <img src="assets/imgs/toolbox.svg" alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page" class="icon">
-                            <h6 class="title">Placeat</h6>
+                            <h6 class="title">Placeat(Coming Soon)</h6>
                             <p class="subtitle">Labore velit culpa adipisci excepturi consequuntur itaque in nam molestias dolorem iste quod.</p>
                         </div>
                     </div>
@@ -121,7 +121,7 @@
                     <div class="service-card">
                         <div class="body">
                             <img src="assets/imgs/analytics.svg" alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page" class="icon">
-                            <h6 class="title">Iusto</h6>
+                            <h6 class="title">Iusto(Coming Soon)</h6>
                             <p class="subtitle">Labore velit culpa adipisci excepturi consequuntur itaque in nam molestias dolorem iste quod.</p>
                         </div>
                     </div>
@@ -134,7 +134,7 @@
     <section class="section" id="portfolio">
         <div class="container text-center">
             <p class="section-subtitle">What I Did ?</p>
-            <h6 class="section-title mb-6">Portfolio</h6>
+            <h6 class="section-title mb-6">Portfolio(Coming Soon)</h6>
             <!-- row -->
             <div class="row">
                 <div class="col-md-4">
@@ -177,7 +177,7 @@
     <!-- pricing section -->
     <section class="section" id="pricing">
         <div class="container text-center">
-            <p class="section-subtitle">How Much I Charge ?</p>
+            <p class="section-subtitle">How Much I Charge ? (Coming Soon)</p>
             <h6 class="section-title mb-6">My Pricing</h6>
             <!-- row -->
             <div class="pricing-wrapper">
@@ -256,7 +256,7 @@
             <!-- row -->
             <div class="row align-items-center">
                 <div class="col-sm offset-md-1 mb-4 mb-md-0">
-                    <h6 class="title text-light">Want to work with me?</h6>
+                    <h6 class="title text-light">Want to work with me? (Coming Soon)</h6>
                     <p class="m-0 text-light">Always feel Free to Contact & Hire me</p>
                 </div>
                 <div class="col-sm offset-sm-2 offset-md-3">
@@ -357,19 +357,22 @@
             <p class="section-subtitle">How can you communicate?</p>
             <h6 class="section-title mb-5">Contact Me</h6>
             <!-- contact form -->
-            <form action="" class="contact-form col-md-10 col-lg-8 m-auto">
+            <form [formGroup]="sendMessageForm" action="" class="contact-form col-md-10 col-lg-8 m-auto">
                 <div class="form-row">
                     <div class="form-group col-sm-6">
-                        <input type="text" size="50" class="form-control" placeholder="Your Name" required>                 
+                        <input type="text" size="50" class="form-control" formControlName='nameControl' placeholder="Your Name" required>                 
                     </div>
                     <div class="form-group col-sm-6">
-                        <input type="email" class="form-control" placeholder="Enter Email"requried>                 
+                        <input type="email" class="form-control" formControlName='emailControl' placeholder="Enter Email" requried> 
+                        <div *ngIf="sendMessageForm.get('emailControl')?.invalid && (sendMessageForm.get('emailControl')?.dirty || sendMessageForm.get('emailControl')?.touched)">
+                            <p class="error-message"><small>Please enter a valid email address.</small></p>
+                          </div>                
                     </div>
                     <div class="form-group col-sm-12">
-                        <textarea name="comment" id="comment" rows="6"   class="form-control" placeholder="Write Something"></textarea>
+                        <textarea name="comment" id="comment" rows="6"  formControlName='commentControl' class="form-control" placeholder="Write Something"></textarea>
                     </div>
                     <div class="form-group col-sm-12 mt-3">
-                        <input type="submit" value="Send Message" (click)="sendMessageButton()" class="btn btn-outline-primary rounded">                  
+                        <input type="submit" value="Send" (click)="sendMessageButton()" class="btn btn-outline-primary rounded" [disabled]="!sendMessageForm.valid">                  
                     </div>
                 </div>  
             </form><!-- end of contact form -->
@@ -380,7 +383,7 @@
     <!-- footer -->
     <div class="container">
         <footer class="footer">       
-            <p class="mb-0">Copyright <script>document.write(new Date().getFullYear())</script> &copy; <a href="http://www.devcrud.com">DevCRUD</a></p>
+            <p class="mb-0">Copyright <script>document.write(new Date().getFullYear())</script> &copy; <a href="">LinkDex</a></p>
             <div class="social-links text-right m-auto ml-sm-auto">
                 <a href="javascript:void(0)" class="link"><i class="ti-facebook"></i></a>
                 <a href="javascript:void(0)" class="link"><i class="ti-twitter-alt"></i></a>
