@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
   title = 'DhanushkaPortfolio';
   align = 'left';
   // pdf document
-  pdfSrc = '../assets/pdf/Dhanushka_Prabath.pdf';
+  pdfSrc = 'assets/pdf/Dhanushka_Prabath.pdf';
   pdfDoc?: PDFDocumentProxy;
   pdfDownloaded: any;
   @ViewChild('pdfViewer') pdfViewer!: NgxExtendedPdfViewerComponent;
