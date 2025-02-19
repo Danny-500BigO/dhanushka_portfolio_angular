@@ -62,6 +62,7 @@ export class AppComponent implements OnInit {
       .then(
         () => {
           console.log('SUCCESS!');
+          this.sendMessageForm.reset();
         },
         (error) => {
           console.log('FAILED...', (error as EmailJSResponseStatus).text);
