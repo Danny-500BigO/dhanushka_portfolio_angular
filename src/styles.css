@@ -2,6 +2,7 @@
 /*font icons*/
 @import "assets/css/meyawo.css";
 @import "assets/vendors/themify-icons/css/themify-icons.css";
+@import 'bootstrap/dist/css/bootstrap.min.css';
  /* <link rel="stylesheet" href="assets/vendors/themify-icons/css/themify-icons.css"> */
   /*Bootstrap + Meyawo main styles*/
 /* <link rel="stylesheet" href="assets/css/meyawo.css"> */

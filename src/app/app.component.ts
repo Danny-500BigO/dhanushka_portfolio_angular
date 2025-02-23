@@ -7,12 +7,14 @@ import emailjs, { type EmailJSResponseStatus } from '@emailjs/browser';
 import {ReactiveFormsModule,FormBuilder, Validators} from '@angular/forms'
 import { CommonModule } from '@angular/common';
 
+import { PrimeNG } from 'primeng/config';
+
+
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet,NgxExtendedPdfViewerModule,ReactiveFormsModule,CommonModule],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+    selector: 'app-root',
+    imports: [NgxExtendedPdfViewerModule, ReactiveFormsModule, CommonModule],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
   title = 'DhanushkaPortfolio';
@@ -25,14 +27,14 @@ export class AppComponent implements OnInit {
 
 
   constructor(private ngZone: NgZone,private ngxService: NgxExtendedPdfViewerService, 
-    private formBuilder:FormBuilder){
+    private formBuilder:FormBuilder,private primeng: PrimeNG){
 
   }
 
   public sendMessageForm:any;
 
   ngOnInit(){
-
+    this.primeng.ripple.set(true);
     this.LoadMessageForm();
   }
 
