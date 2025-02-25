@@ -6,3 +6,13 @@
  /* <link rel="stylesheet" href="assets/vendors/themify-icons/css/themify-icons.css"> */
   /*Bootstrap + Meyawo main styles*/
 /* <link rel="stylesheet" href="assets/css/meyawo.css"> */
+
+
+/* toast default color change style */
+.p-toast-message-success .p-toast-detail {
+  color: black !important;
+}
+
+.p-toast-message-error .p-toast-detail {
+  color: black !important;
+}
